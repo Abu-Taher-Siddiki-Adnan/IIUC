@@ -80,7 +80,7 @@ int main()
     Enqueue(50);
     Enqueue(60);
     Print();
-    cout << "Top Element of the Queue is " << Top() << endl;
+    //cout << "Top Element of the Queue is : " << Top() << endl;
     // Dequeue();
     // Print();
     // Enqueue(10);
