@@ -40,7 +40,15 @@ void Dequeue()
             front++;
     }
 }
-
+int Top()
+{
+    if(front==0)
+    {
+        cout << "Queue is Empty!" << endl;
+        return 0;
+    }
+    return cqueue[front];
+}
 void Print()
 {
     if (front == 0 && rear == 0)
@@ -72,9 +80,10 @@ int main()
     Enqueue(50);
     Enqueue(60);
     Print();
-    Dequeue();
-    Print();
-    Enqueue(10);
-    Print();
+    cout << "Top Element of the Queue is " << Top() << endl;
+    // Dequeue();
+    // Print();
+    // Enqueue(10);
+    // Print();
     return 0;
 }
