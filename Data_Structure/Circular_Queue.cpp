@@ -1,10 +1,11 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Circular_Queue
 {
     int Front, Rear, MaxSize;
     vector<int> Q;
+
 public:
     Circular_Queue(int n)
     {
@@ -46,12 +47,12 @@ public:
     }
     void Top()
     {
-        if(Front==0)
+        if (Front == 0)
         {
             cout << "Queue is Empty!" << endl;
             return;
         }
-        cout << "Top element of the Queue is : " <<  Q[Front] << endl;
+        cout << "Top element of the Queue is : " << Q[Front] << endl;
     }
     void Display()
     {
@@ -93,7 +94,6 @@ int main()
     cq.Enqueue(70);
     cq.Top();
     cq.Display();
-
 
     return 0;
 }
