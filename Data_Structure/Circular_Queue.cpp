@@ -1,89 +1,99 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-int cqueue[10];
-int front = 0, rear = 0, Size = 6;
-
-void Enqueue(int item)
+class Circular_Queue
 {
-    if ((rear + 1 == front) || (front == 1 && rear == Size))
+    int Front, Rear, MaxSize;
+    vector<int> Q;
+public:
+    Circular_Queue(int n)
     {
-        cout << "Queue is full\n";
-        return;
+        Front = 0;
+        Rear = 0;
+        MaxSize = n;
+        Q.resize(MaxSize + 1);
     }
-    if (front == 0)
-        front = 1;
-    if (rear == Size)
-        rear = 1;
-    else
-        rear++;
-    cqueue[rear] = item;
-}
-
-void Dequeue()
-{
-    if (front == 0 && rear == 0)
+    void Enqueue(int item)
     {
-        cout << "Queue is empty\n";
-        return;
-    }
-    else if (front == rear)
-    {
-        front = 0;
-        rear = 0;
-    }
-    else
-    {
-        if (front == Size)
-            front = 1;
+        if ((Rear + 1 == Front) || (Front == 1 && Rear == MaxSize))
+        {
+            cout << "Queue OVERLOADED!" << endl;
+            return;
+        }
+        if (Front == 0)
+            Front = 1;
+        if (Rear == MaxSize)
+            Rear = 1;
         else
-            front++;
+            Rear++;
+        Q[Rear] = item;
     }
-}
-int Top()
-{
-    if(front==0)
+    void Deque()
     {
-        cout << "Queue is Empty!" << endl;
-        return 0;
+        if (Front == 0 && Rear == 0)
+        {
+            cout << "Queue is Empty!" << endl;
+            return;
+        }
+        if (Front == Rear)
+        {
+            Front = Rear = 0;
+        }
+        else
+        {
+            Front = (Front + 1) % MaxSize;
+        }
     }
-    return cqueue[front];
-}
-void Print()
-{
-    if (front == 0 && rear == 0)
+    void Top()
     {
-        cout << "Queue is empty!" << endl;
-        return;
+        if(Front==0)
+        {
+            cout << "Queue is Empty!" << endl;
+            return;
+        }
+        cout << "Top element of the Queue is : " <<  Q[Front] << endl;
     }
-    if (front > rear)
+    void Display()
     {
-        for (int i = 1; i <= rear; i++)
-            cout << cqueue[i] << " ";
-        for (int i = front; i <= Size; i++)
-            cout << cqueue[i] << " ";
+        if (Front == 0)
+        {
+            cout << "Queue is Empty!" << endl;
+            return;
+        }
+        cout << "Elements in the circular queue are: ";
+        if (Front <= Rear)
+        {
+            for (int i = Front; i <= Rear; i++)
+                cout << Q[i] << " ";
+            cout << endl;
+        }
+        else
+        {
+            for (int i = 1; i <= Rear; i++)
+                cout << Q[i] << " ";
+            for (int i = Front; i <= MaxSize; i++)
+                cout << Q[i] << " ";
+            cout << endl;
+        }
     }
-    else if (front <= rear)
-    {
-        for (int i = front; i <= rear; i++)
-            cout << cqueue[i] << " ";
-    }
-    cout << endl;
-}
+};
 
 int main()
 {
-    Enqueue(10);
-    Enqueue(20);
-    Enqueue(30);
-    Enqueue(40);
-    Enqueue(50);
-    Enqueue(60);
-    Print();
-    //cout << "Top Element of the Queue is : " << Top() << endl;
-    // Dequeue();
-    // Print();
-    // Enqueue(10);
-    // Print();
+    Circular_Queue cq(5);
+    cq.Enqueue(10);
+    cq.Enqueue(20);
+    cq.Enqueue(30);
+    cq.Enqueue(40);
+    cq.Enqueue(50);
+    cq.Enqueue(60);
+    cq.Top();
+    cq.Display();
+    cq.Deque();
+    cq.Enqueue(70);
+    cq.Top();
+    cq.Display();
+
+
     return 0;
 }
