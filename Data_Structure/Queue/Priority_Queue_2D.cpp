@@ -1,86 +1,126 @@
+//Implementation of Priority Queue using 2D Array
 #include <bits/stdc++.h>
 using namespace std;
 
-int Size = 6;
-int Priority = 10;
-int arr[20][20] = {{0}};
-int Front[20] = {0};
-int Rear[20] = {0};
-
-void Enqueue(int item, int prio)
+class Priority_Queue
 {
-    if (prio > Priority)
-    {
-        cout << "Invalid Priority" << endl;
-        return;
-    }
-    if (Front[prio] == Rear[prio] + 1 or (Front[prio] == 1 and Rear[prio] == Size))
-    {
-        cout << "Queue Overflow" << endl;
-        return;
-    }
-    if (Front[prio] == 0)
-        Front[prio]++;
-    if (Rear[prio] == Size)
-        Rear[prio] = 1;
-    else
-        Rear[prio]++;
-    arr[prio][Rear[prio]] = item;
-}
+    int maxSize, maxPriority;
+    vector<vector<int>> Q;
+    vector<int> Front;
+    vector<int> Rear;
 
-void Dequeue()
-{
-    for (int i = 1; i <= Priority; i++)
+    void add(int item, int p)
     {
-        for (int j = 1; j <= Size; j++)
+        if (p < 1 || p > maxPriority)
         {
-            if (arr[i][j] != 0)
+            cout << "Invalid priority!" << endl;
+            return;
+        }
+
+        if ((Front[p] == 1 && Rear[p] == maxSize) || Front[p] == Rear[p] + 1)
+        {
+            cout << "Queue OVERLOADED for priority " << p << "!" << endl;
+            return;
+        }
+
+        if (Front[p] == 0)
+        {
+            Front[p] = 1;
+            Rear[p] = 1;
+        }
+        else
+        {
+            if (Rear[p] == maxSize)
+                Rear[p] = 1;
+            else
+                Rear[p]++;
+        }
+
+        Q[p][Rear[p]] = item;
+    }
+    void Delete()
+    {
+        for (int i = 1; i <= maxPriority; i++)
+        {
+            for (int j = 1; j <= maxSize; j++)
             {
-                arr[i][j] = 0;
-                Front[i]++;
-                if (Front[i] > Size)
-                    Front[i] = 1;
-                return;
+                if (Q[i][j] != 0)
+                {
+                    Q[i][j] = 0;
+                    Front[i]++;
+                    if (Front[i] > maxSize)
+                        Front[i] = 1;
+                    return;
+                }
             }
         }
+        cout << "Queue is empty" << endl;
     }
-    cout << "Queue is empty" << endl;
-}
-void Print()
-{
-    for (int i = 1; i <= Priority; i++)
+
+    void Print()
     {
-        bool hasData = false;
-        for (int j = 1; j <= Size; j++)
+        for (int i = 1; i <= maxPriority; i++)
         {
-            if (arr[i][j] != 0)
+            cout << "Priority " << i << ": ";
+            bool hasData = false;
+            for (int j = 1; j <= maxSize; j++)
             {
-                cout << arr[i][j] << " ";
-                hasData = true;
+                if (Q[i][j] != 0)
+                {
+                    cout << Q[i][j] << " ";
+                    hasData = true;
+                }
             }
-        }
-        if (hasData)
+            if (!hasData)
+                cout << "EMPTY";
             cout << endl;
+        }
     }
-}
 
+public:
+    Priority_Queue(int n, int p)
+    {
+        maxPriority = p;
+        maxSize = n;
+
+        Front.resize(maxPriority + 1, 0);
+        Rear.resize(maxPriority + 1, 0);
+        Q.resize(maxPriority + 1, vector<int>(maxSize + 1, 0));
+    }
+
+    void Enqueue(int item, int p)
+    {
+        add(item, p);
+    }
+    void Deque()
+    {
+        Delete();
+    }
+    void Display()
+    {
+        Print();
+    }
+};
 
 int main()
 {
-    Enqueue(10, 1);
-    Enqueue(20, 1);
-    Enqueue(30, 1);
-    Enqueue(40, 1);
-    Enqueue(50, 1);
-    Enqueue(60, 1);
+    Priority_Queue pq(5, 5);
 
-    Print();
-
-    Dequeue();
-    Print();
-
-    Enqueue(70, 1);
-    Print();
+    pq.Enqueue(20, 2);
+    pq.Enqueue(40, 4);
+    pq.Enqueue(21, 2);
+    pq.Enqueue(10, 1);
+    pq.Enqueue(44, 4);
+    pq.Enqueue(11, 1);
+    pq.Enqueue(22, 2);
+    pq.Enqueue(23, 2);
+    pq.Enqueue(24, 2);
+    pq.Enqueue(25, 2);
+    pq.Enqueue(12, 1);
+    pq.Display();
+    
+    pq.Deque();
+    pq.Display();
 
     return 0;
 }
