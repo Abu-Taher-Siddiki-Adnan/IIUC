@@ -1,4 +1,4 @@
-//Implementation of Priority Queue using 2D Array
+//Implementation of Priority Queue using 2D Vector
 #include <bits/stdc++.h>
 using namespace std;
 
