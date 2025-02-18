@@ -1,0 +1,31 @@
+#Creating table:
+create table employee (
+    id number primary key,
+    name varchar2(50),
+    position varchar2(50),
+    mobile varchar2(15),
+    salary number
+);
+
+#Inserting data:
+insert into employee (id,name,position,mobile,salary)
+values (101,'Adnan','CEO','01601897826',100000);
+insert into employee (id,name,position,mobile,salary)
+values (102,'Jasim','MD','01600000000',70000);
+insert into employee (id,name,position,mobile,salary)
+values (103,'Faruk','HR','01900000000',60000);
+insert into employee (id,name,position,mobile,salary)
+values (104,'Rakib','Engineer','01700000000',50000);
+
+#Retrieving data
+select * from employee;   {All}
+select name,position,salary from employee;      {Specific Data}
+
+#Restricting data:
+select * from employee where salary>50000;
+
+#Sorting data:
+select * from employee order by salary desc;
+
+#Logical Operator:
+select * from employee where position='CEO' or salary>=50000
