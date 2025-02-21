@@ -42,56 +42,26 @@ int main()
         int n, k;
         cin >> n >> k;
         vecIn(vec, n);
-        sort(all(vec));
-
-        ll mul = 1;
+        ll ans = LLONG_MAX;
+        int evenCnt = 0;
         for (int i = 0; i < n; i++)
         {
-            mul *= vec[i];
+            if (vec[i] % 2 == 0)
+                evenCnt++;
+            if (vec[i] % k == 0)
+                ans = 0;
+            ans = min(k - vec[i] % k, ans);
         }
-
-        if (mul % k == 0)
+        if (k == 4)
         {
-            print(0);
-            continue;
+            if (evenCnt >= 2)
+                ans = 0;
+            else if (evenCnt == 1)
+                ans = min(ans, 1LL);
+            else
+                ans = min(ans, 2LL);
         }
-
-        if (k != 4)
-        {
-            vll newVec(n);
-            for (int i = 0; i < n; i++)
-            {
-                if (vec[i] < k)
-                    newVec[i] = k - vec[i];
-                else
-                {
-                    ll d = vec[i] / k;
-                    d++;
-                    ll x = d * k - vec[i];
-                    newVec[i] = x;
-                }
-            }
-            sort(all(newVec));
-            print(newVec[0]);
-            continue;
-        }
-
-        int cnt = 0;
-        for (ll num : vec)
-        {
-            if (num % 2 == 0)
-                cnt++;
-        }
-        ll ans =  max(0, 2 - cnt);
-        ll mod = LLONG_MIN;
-        for (int i = 0; i < n; i++)
-        {
-            mod = max((vec[i] % k), mod);
-        }
-        if (n >= 2 and k == 4)
-            cout << min(k - mod, ans) << endl;
-        else
-            cout << k - mod << endl;
+        print(ans);
     }
     return 0;
 }
