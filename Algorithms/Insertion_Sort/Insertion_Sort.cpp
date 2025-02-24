@@ -18,7 +18,7 @@ void sort(int arr[], int n)
 
 int main()
 {
-    ifstream infile("20000Numbers.txt");
+    ifstream infile("5000Numbers.txt");
     if (!infile)
     {
         cerr << "Error opening file" << endl;
@@ -35,13 +35,11 @@ int main()
 
     int n = arr.size();
 
-    auto start = chrono::high_resolution_clock::now();
+    clock_t before = clock();
     sort(arr.data(), n);
-    auto end = chrono::high_resolution_clock::now();
-    chrono::duration<double, milli> duration = end - start;
+    clock_t duration = clock() - before;
 
-    cout << "Time taken for sorting: " << duration.count() << " milliseconds" << endl;
-
+    cout << "Duration: " << (float)duration * 1000 / CLOCKS_PER_SEC << " ms" << endl;
 
     return 0;
 }
