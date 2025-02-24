@@ -18,7 +18,7 @@ void sort(int arr[], int n)
 
 int main()
 {
-    ifstream infile("5000Numbers.txt");
+    ifstream infile("20000Numbers.txt");
     if (!infile)
     {
         cerr << "Error opening file" << endl;
@@ -26,10 +26,11 @@ int main()
     }
 
     vector<int> arr;
-    int num;
-    while (infile >> num)
+    int num, count = 0;
+    while (infile >> num && count < 5000)
     {
         arr.push_back(num);
+        count++;
     }
     infile.close();
 
