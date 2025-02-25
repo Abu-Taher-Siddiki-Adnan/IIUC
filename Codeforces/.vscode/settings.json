@@ -3,6 +3,7 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "cstdlib": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "random": "cpp"
     }
 }
