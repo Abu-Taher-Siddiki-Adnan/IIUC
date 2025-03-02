@@ -26,21 +26,25 @@ int main()
     }
 
     vector<int> arr;
+    clock_t before = clock();
     int num, count = 0;
-    while (infile >> num && count < 5000)
+    while (infile >> num && count < 20000)
     {
         arr.push_back(num);
         count++;
     }
+    clock_t duration = clock() - before;
+
+    cout << "Duration: " << (float)duration * 1000 / CLOCKS_PER_SEC << " ms" << endl;
     infile.close();
 
     int n = arr.size();
 
-    clock_t before = clock();
+    //clock_t before = clock();
     sort(arr.data(), n);
-    clock_t duration = clock() - before;
+    //clock_t duration = clock() - before;
 
-    cout << "Duration: " << (float)duration * 1000 / CLOCKS_PER_SEC << " ms" << endl;
+    //cout << "Duration: " << (float)duration * 1000 / CLOCKS_PER_SEC << " ms" << endl;
 
     return 0;
 }
