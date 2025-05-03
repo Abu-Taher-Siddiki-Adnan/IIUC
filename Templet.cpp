@@ -15,8 +15,8 @@ using namespace std;
 #define rev(n) n.rbegin(), n.rend()
 #define sz(x) (int)x.size()
 #define pb push_back
-#define Y cout << "YES" << endl
-#define N cout << "NO" << endl
+#define Yes cout << "YES" << endl
+#define No cout << "NO" << endl
 #define print(n) cout << n << endl
 #define Pi M_PI
 #define newline cout << endl
