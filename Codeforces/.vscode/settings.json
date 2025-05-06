@@ -4,6 +4,14 @@
         "ostream": "cpp",
         "cstdlib": "cpp",
         "map": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "array": "cpp",
+        "chrono": "cpp",
+        "functional": "cpp",
+        "ratio": "cpp",
+        "scoped_allocator": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp"
     }
 }
