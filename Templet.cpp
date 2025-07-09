@@ -1,9 +1,12 @@
+/***********************************************************
+ *                  Abu Taher Siddiki Adnan                *
+ ***********************************************************/
+
 #include <bits/stdc++.h>
 using namespace std;
 
 #define ll long long
 #define ull unsigned long long
-#define all(a) a.begin(), a.end()
 #define vi vector<int>
 #define vvi vector<vi>
 #define vll vector<ll>
@@ -11,7 +14,12 @@ using namespace std;
 #define pll pair<ll, ll>
 #define vPi vector<pair<int, int>>
 #define vPll vector<pair<ll, ll>>
+#define Map map<int,int>
 #define uMap unordered_map<int, int>
+#define Set set<int>
+#define uSet unordered_set<int>
+
+#define all(a) a.begin(), a.end()
 #define rev(n) n.rbegin(), n.rend()
 #define sz(x) (int)x.size()
 #define pb push_back
@@ -19,9 +27,16 @@ using namespace std;
 #define No cout << "NO" << endl
 #define print(n) cout << n << endl
 #define Pi M_PI
+#define ff first
+#define ss second
 #define newline cout << endl
+
 #define FOR(i, a, b) for (int i = (a); i < (b); i++)
 #define F0R(i, n) FOR(i, 0, n)
+#define RFOR(i, a, b) for (int i = (a); i >= (b); i--)
+
+const ll INF = 1e18;
+
 #define fast_io                       \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);                    \
@@ -38,7 +53,7 @@ using namespace std;
 
 void solve()
 {
-    return;
+    // Solution for the problem goes here
 }
 int main()
 {
