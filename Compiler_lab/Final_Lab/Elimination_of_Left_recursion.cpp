@@ -21,7 +21,7 @@ pair<vector<string>, vector<string>> sepProd(vector<string> prodRow) {
         
         if (prod.find(nonTerminal) == 0) {
             string remaining = prod.substr(nonTerminal.length());
-            alpha.push_back(remaining.empty() ? "ε" : remaining);
+            alpha.push_back(remaining.empty() ? "Ep" : remaining);
         } else {
             beta.push_back(prod);
         }
@@ -58,7 +58,7 @@ vector<vector<string>> eliminateLC(vector<vector<string>> grammar) {
         for (auto &a : alpha) {
             newNTRow.push_back(a + newNT);
         }
-        newNTRow.push_back("ε");
+        newNTRow.push_back("Ep");
         newGrammar.push_back(newNTRow);
     }
     
