@@ -35,7 +35,7 @@ int main()
             }
             else if (ch != ' ')
                 current += ch;
-        }
+        }   
         if (!current.empty())
             prods.push_back(current);
 
@@ -45,7 +45,7 @@ int main()
             continue;
         }
 
-        string common = prods[0];
+        string common = prods[0];  // aB
         for (int j = 1; j < prods.size(); j++)
         {
             int k = 0;
